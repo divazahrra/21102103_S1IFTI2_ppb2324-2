@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:praktikum_06/styles/colors.dart';
-import 'package:praktikum_06/styles/text_style.dart';
+import 'package:praktikum_07/styles/colors.dart';
+import 'package:praktikum_07/styles/text_style.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-  
-  get kBgColor => null;
-  
-  get kBody1 => null;
-  
-  get kMatterhornBlack => null;
-  
-  get kHeading6 => null;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +34,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Diva Zahra Berliani 👏',
+                            'Enna Santana 👏',
                             style: kHeading6.copyWith(
                               color: kMatterhornBlack,
                             ),
@@ -103,7 +95,7 @@ class HomePage extends StatelessWidget {
                           height: 12,
                         ),
                         Text(
-                          'Rp. 10.430.000',
+                          'Rp 10.430.000',
                           style: kHeading5.copyWith(
                             color: kWhite,
                           ),
@@ -113,6 +105,7 @@ class HomePage extends StatelessWidget {
                         ),
                         LinearPercentIndicator(
                           lineHeight: 4,
+                          padding: EdgeInsets.symmetric(horizontal: 0),
                           progressColor: kEgyptianBlue,
                           percent: 0.3,
                           backgroundColor: kWhite,
@@ -140,8 +133,138 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(top: 200),
+              child: DraggableScrollableSheet(
+                controller: DraggableScrollableController(),
+                builder: (context, scrollController) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: kWhite,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(40),
+                      ),
+                    ),
+                    padding: const EdgeInsets.only(
+                      left: 30,
+                      right: 30,
+                      top: 21,
+                    ),
+                    child: Stack(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(top: 14),
+                          child: SingleChildScrollView(
+                            controller: scrollController,
+                            child: Column(
+                              children: [
+                                Center(
+                                  child: Text(
+                                    'Transactions History',
+                                    style: kHeading6.copyWith(
+                                      color: kLuckyBlue,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 31,
+                                ),
+                                _transactionList(
+                                  kTreeGreen.withOpacity(0.2),
+                                  'assets/icons/triangle-up.png',
+                                  'Success!',
+                                  'February 19, 03:25 PM',
+                                  '+ 100.000',
+                                ),
+                                _transactionList(
+                                  kTreeGreen.withOpacity(0.2),
+                                  'assets/icons/triangle-up.png',
+                                  'Success!',
+                                  'February 16, 01:25 PM',
+                                  '+ 150.000',
+                                ),
+                                _transactionList(
+                                  kOrange.withOpacity(0.2),
+                                  'assets/icons/triangle-down.png',
+                                  'Starbucks Drinks',
+                                  'February 10, 12:25 PM',
+                                  '- 110.000',
+                                ),
+                                _transactionList(
+                                  kOrange.withOpacity(0.2),
+                                  'assets/icons/triangle-down.png',
+                                  'Payment #Invest',
+                                  'February 5, 11:05 PM',
+                                  '- 130.000',
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                            height: 4,
+                            width: 49,
+                            color: kEgyptianBlue.withOpacity(0.1),
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _transactionList(
+      Color bgColor, String icon, String title, String sub, String amount) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: Row(
+        children: [
+          SizedBox(
+            height: 30,
+            width: 30,
+            child: CircleAvatar(
+              backgroundColor: bgColor,
+              child: Image(
+                image: AssetImage(icon),
+                width: 14,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: kBody1.copyWith(color: kLuckyBlue),
+              ),
+              Text(
+                sub,
+                style: kCaption.copyWith(
+                  color: kLightGray,
+                ),
+              )
+            ],
+          ),
+          Spacer(),
+          Text(
+            amount,
+            style: kBody1.copyWith(
+              color: kLuckyBlue,
+            ),
+          )
+        ],
       ),
     );
   }
