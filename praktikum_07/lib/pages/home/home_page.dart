@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Enna Santana 👏',
+                            'Diva Zahra Berliani 👏',
                             style: kHeading6.copyWith(
                               color: kMatterhornBlack,
                             ),
