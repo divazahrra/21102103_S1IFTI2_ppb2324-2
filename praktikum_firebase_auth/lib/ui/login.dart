@@ -5,12 +5,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:praktikum_firebase_auth/bloc/login/login_cubit.dart';
 import 'package:praktikum_firebase_auth/ui/home_screen.dart';
 import 'package:praktikum_firebase_auth/ui/phone_auth_screen.dart';
+import 'package:praktikum_firebase_auth/utils/routes.dart';
 
-// ignore: unused_import
-import '../utils/routes.dart';
+
 
 class LoginScreen extends StatefulWidget {
-  // ignore: use_super_parameters
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -21,8 +20,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailEdc = TextEditingController();
   final passEdc = TextEditingController();
   bool passInvisible = false;
-  
-  String? get rHome => null;
 
   Future<UserCredential> signInWithGoogle() async {
     final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
@@ -64,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 content: Text(state.msg),
                 backgroundColor: Colors.green,
               ));
-            Navigator.pushNamedAndRemoveUntil(context, rHome!, (route) => false);
+            Navigator.pushNamedAndRemoveUntil(context, rHome, (route) => false);
           }
         },
         child: Container(
@@ -148,6 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
+                      
                       signInWithGoogle();
                     },
                     child: const CircleAvatar(
