@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/register/register_cubit.dart';
-// ignore: unused_import
 import '../utils/routes.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -16,8 +15,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final emailEdc = TextEditingController();
   final passEdc = TextEditingController();
   bool passInvisible = false;
-  
-  late String rLogin;
 
   @override
   Widget build(BuildContext context) {

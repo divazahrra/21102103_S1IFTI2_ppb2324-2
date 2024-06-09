@@ -3,33 +3,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:praktikum_firebase_auth/ui/login.dart';
-// ignore: unused_import
 import 'package:praktikum_firebase_auth/utils/routes.dart';
 
 import 'bloc/login/login_cubit.dart';
 import 'bloc/register/register_cubit.dart';
-// ignore: unused_import
-import 'firebase_options.dart';
+// import 'firebase_options.dart';
 import 'ui/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // ignore: prefer_typing_uninitialized_variables, unused_local_variable
-  var currentPlatform;
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+      // options: DefaultFirebaseOptions.currentPlatform,
+      );
   runApp(const MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  
-  get generateRoute => null;
-  
-  // ignore: non_constant_identifier_names
-  get NAV_KEY => null;
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +29,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => RegisterCubit()),
       ],
       child: MaterialApp(
+        theme: ThemeData(useMaterial3: false),
         title: "Praktikum 6",
         debugShowCheckedModeBanner: false,
         navigatorKey: NAV_KEY,

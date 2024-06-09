@@ -5,9 +5,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:praktikum_firebase_auth/bloc/login/login_cubit.dart';
 import 'package:praktikum_firebase_auth/ui/home_screen.dart';
 import 'package:praktikum_firebase_auth/ui/phone_auth_screen.dart';
-import 'package:praktikum_firebase_auth/utils/routes.dart';
 
-
+import '../utils/routes.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -145,7 +144,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      
                       signInWithGoogle();
                     },
                     child: const CircleAvatar(
